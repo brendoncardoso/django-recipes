@@ -1,5 +1,80 @@
-<div class="search-container">
-    <div class="container">
-        Olá
-    </div>
-</div>
+{% extends "view.html" %}
+{% block title %}{{title}}{% endblock title %}
+{% load static %}
+
+{% block content %}
+    {% include '../partials/search.html' %}  
+
+    {% if data %}
+        <div class="main-content main-content-list container">
+            {% for item in data %} 
+                <div class="recipe recipe-list-item">
+                    <div class="recipe-cover">
+                        {% if item.cover %}
+                            <img src="{{item.cover}}" alt="Temporário">
+                        {% else %}
+                            <img src="{% static 'img/default.png'%}" alt="Temporário">
+                        {% endif %}
+                    </div>
+                    <div class="recipe-title-container">
+                        <h3 class="recipe-title">{{ item.title }}</h3>
+                    </div>
+
+                    <div class="recipe-author">
+                        <span class="recipe-author-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            {{ item.created_at|date:"d/m/Y" }} às {{item.created_at|date:"H:i:s"}}
+                        </span>
+
+                        <span class="recipe-author-item">
+                            <a href="/recipes/category/{{item.category.id}}">
+                                <i class="fas fa-layer-group"></i>
+                                <span>{{item.category.name}}</span>
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="recipe-content">
+                        <p>{{item.description}}</p>
+                    </div>
+
+                    <div class="recipe-meta-container">
+                        <div class="recipe-meta recipe-preparation">
+                            <h3 class="recipe-meta-title"><i class="fas fa-stopwatch"></i> Preparo</h3>
+                            <div class="recipe-meta-text">
+                                {{item.preparation_time}} Minuto(s)
+                            </div>
+                        </div>
+                        <div class="recipe-meta recipe-servings">
+                            <h3 class="recipe-meta-title"><i class="fas fa-pizza-slice"></i> Porções</h3>
+                            <div class="recipe-meta-text">
+                                {{item.servings}} 
+                                {% if item.servings > 1 %}
+                                    Porções
+                                {% else %}
+                                    Porção
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="recipe-footer">
+                        <a class="recipe-read-more button button-dark button-full-width" href="/recipes/{{item.id}}/">
+                            <i class="fas fa-eye"></i>
+                            <span>ver mais...</span>
+                        </a>
+                    </footer>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">Atenção!</h4>
+                <p>No momento, não há receitas cadastradas no site.</p>
+                <hr>
+                <p class="mb-0">Pedimos desculpas pelo ocorrido. Por favor, volte novamente mais tarde...</p> 
+            </div>
+        </div>
+    {% endif %} 
+{% endblock content %} 

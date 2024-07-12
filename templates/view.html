@@ -1,14 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% include "partials/head.html" %}
+    {% comment %} {% include "partials/head.html" %}  {% endcomment %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} {% endblock title %}</title>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+        <link 
+            rel="stylesheet" 
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/fontawesome.min.css" 
+            integrity="sha512-P9vJUXK+LyvAzj8otTOKzdfF1F3UYVl13+F8Fof8/2QNb8Twd6Vb+VD52I7+87tex9UXxnzPgWA3rH96RExA7A==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer" 
+        />
+        <link 
+            rel="stylesheet" 
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/brands.min.css" 
+            integrity="sha512-sVSECYdnRMezwuq5uAjKQJEcu2wybeAPjU4VJQ9pCRcCY4pIpIw4YMHIOQ0CypfwHRvdSPbH++dA3O4Hihm/LQ==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer" 
+        />
+        <link 
+            rel="stylesheet" 
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/solid.min.css" 
+            integrity="sha512-tk4nGrLxft4l30r9ETuejLU0a3d7LwMzj0eXjzc16JQj+5U1IeVoCuGLObRDc3+eQMUcEQY1RIDPGvuA7SNQ2w==" 
+            crossorigin="anonymous" 
+            referrerpolicy="no-referrer" 
+        />
+        {% load static %}
+        
+        {% comment %} partials-CSS {% endcomment %}
+        <link rel="stylesheet" href="{% static '/css/header.css' %}">
+        <link rel="stylesheet" href="{% static '/css/view.css' %}">
+        <link rel="stylesheet" href="{% static '/css/footer.css' %}">
+    
+        {% comment %} pages-CSS {% endcomment %}
+        <link rel="stylesheet" href="{% static '/css/home.css' %}">
+    </head>
 
     <body>
-        {% include "partials/header.html" %}
-
-        {% if page %}
-            {% include page %}
-        {% endif %}
+        {% include "partials/header.html" %} 
+        <main class="main-content-container"> 
+            {% block content %} {% endblock content %} 
+        </main> 
     </body>
     
-    {% include "partials/footer.html" %}
+    {% include "partials/footer.html" %} 
 </html>
