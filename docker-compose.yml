@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  web:
+  django:
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,6 +9,21 @@ services:
       - "8000:8000"
     volumes:
       - .:/code
+    depends_on:
+      - db
     env_file:
       - .env
-    command: python manage.py runserver 0.0.0.0:8000
+      
+  db:
+    image: mysql:5.7
+    container_name: db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql 
+
+volumes:
+  mysql_data:  

@@ -1,20 +1,22 @@
-# Use uma imagem base oficial do Python
+# Use the official Python image from the Docker Hub
 FROM python:3.10
 
-# Defina o diretório de trabalho no contêiner
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+    
+# Set work directory inside the container
 WORKDIR /app
 
-# Copie os arquivos de requisitos para o contêiner
-COPY requirements.txt .
+# Install dependencies
+COPY requirements.txt /app/
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
-# Instale as dependências
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy project files into the container
+COPY . /app/
 
-# Copie o conteúdo do projeto para o diretório de trabalho no contêiner
-COPY . .
-
-# Exponha a porta que o Django usará
+# Port to expose (adjust if needed)
 EXPOSE 8000
 
-# Defina o comando padrão para rodar o servidor Django
+# Command to run the application
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
