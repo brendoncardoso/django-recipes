@@ -1,14 +1,14 @@
-<mxfile host="app.diagrams.net" modified="2024-07-16T03:21:07.598Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36 Edg/126.0.0.0" etag="JQ8CMyoF_nAVyAWPXb05" version="24.6.5" type="github">
+<mxfile host="app.diagrams.net" modified="2024-07-16T03:30:39.272Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36" etag="H1Ryrz-OKVc9zsxYXn-d" version="24.6.5" type="github">
   <diagram name="Página-1" id="_JozszdOQ5H9nEkMJRZu">
-    <mxGraphModel dx="872" dy="481" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1120" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="QfOIu-FKV3c28wFlhBkD-2" value="&lt;font face=&quot;Comic Sans MS&quot; style=&quot;font-size: 24px;&quot;&gt;RECEITAS FIT&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a0522d;strokeColor=#6D1F00;fontColor=#ffffff;" parent="1" vertex="1">
           <mxGeometry x="299" y="10" width="230" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="QPrcj-d1KP4ANlLvY0ZX-1" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="40" y="100" width="120" height="120" as="geometry" />
+        <mxCell id="QPrcj-d1KP4ANlLvY0ZX-1" value="" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="90" y="150" width="120" height="120" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
