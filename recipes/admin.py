@@ -12,7 +12,7 @@ class CategoryAdmin(admin.ModelAdmin):
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ['title', 'author', 'created_at', 'updated_at', 'status']
-    exclude = ['status', 'author']
+    exclude = ['author']
     
     def save_model(self, request, obj, form, change):
         if not obj.pk:

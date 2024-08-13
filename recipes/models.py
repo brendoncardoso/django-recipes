@@ -1,7 +1,10 @@
+import os
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
+import uuid
 
 
 class Category(models.Model):
@@ -21,6 +24,7 @@ class Category(models.Model):
         
 
 class Recipe(models.Model):
+    uuid = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
     title = models.CharField(max_length=65, verbose_name=_("Título"))
     description = models.CharField(max_length=165, verbose_name=_("Descrição"))
     preparation_time = models.IntegerField(verbose_name=_("Tempo de Preparo"))
@@ -28,11 +32,14 @@ class Recipe(models.Model):
     servings = models.IntegerField(verbose_name=_("Quantidade de Porção"))
     # servings_unit = models.CharField(max_length=65)
     preparation_steps = models.TextField(verbose_name=_("Texto"))
-    cover = models.ImageField(upload_to='recipes/covers/%Y/%m/%d/', verbose_name=_("Imagem"))
-    category = models.OneToOneField(
+    cover = models.ImageField(
+        upload_to='recipes/covers/%Y/%m/%d/',
+        verbose_name=_("Imagem")
+    )
+    category = models.ForeignKey(
         Category, on_delete=models.SET_NULL, null=True, verbose_name=_("Categoria")
     )
-    author = models.OneToOneField(
+    author = models.ForeignKey(
         User, on_delete=models.SET_NULL, null=True
     )
     created_at = models.DateTimeField(auto_now_add=True)
